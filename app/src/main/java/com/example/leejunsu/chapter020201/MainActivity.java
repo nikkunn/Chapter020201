@@ -51,16 +51,6 @@ public class MainActivity extends AppCompatActivity {
         imageView01.getLayoutParams().width = bitmapWidth;
         imageView01.getLayoutParams().height = bitmapHeight;
 
-
-        bitmap2 = (BitmapDrawable) res.getDrawable(R.drawable.img02);
-        int bitmapWidth2 = bitmap2.getIntrinsicWidth();
-        int bitmapHeight2 = bitmap2.getIntrinsicHeight();
-
-        imageView02.setImageDrawable(bitmap2);
-        imageView02.getLayoutParams().width = bitmapWidth2;
-        imageView02.getLayoutParams().height = bitmapHeight2;
-
-
         Button btn01 = (Button) findViewById(R.id.button01);
         Button btn02 = (Button) findViewById(R.id.button02);
         Button btn03 = (Button) findViewById(R.id.button03);
@@ -91,18 +81,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void upImg() {
-        Toast.makeText(getApplicationContext(), "Up", Toast.LENGTH_LONG).show();
 
+        if(imageView01.getVisibility() == View.VISIBLE) {
 
-        Resources res = getResources();
+            Toast.makeText(getApplicationContext(), "doesn't exist down image", Toast.LENGTH_LONG).show();
 
-        bitmap = (BitmapDrawable) imageView02.getDrawable();
-        int bitmapWidth = bitmap.getIntrinsicWidth();
-        int bitmapHeight = bitmap.getIntrinsicHeight();
+        } else {
+            Toast.makeText(getApplicationContext(), "Up", Toast.LENGTH_LONG).show();
 
-        imageView01.setImageDrawable(bitmap);
-        imageView01.getLayoutParams().width = bitmapWidth;
-        imageView01.getLayoutParams().height = bitmapHeight;
+            Resources res = getResources();
+
+            bitmap = (BitmapDrawable) imageView02.getDrawable();
+            int bitmapWidth = bitmap.getIntrinsicWidth();
+            int bitmapHeight = bitmap.getIntrinsicHeight();
+
+            imageView01.setImageDrawable(bitmap);
+            imageView01.getLayoutParams().width = bitmapWidth;
+            imageView01.getLayoutParams().height = bitmapHeight;
+
+            imageView02.setVisibility(View.INVISIBLE);
+
+        }
+/*
 
 
         bitmap = (BitmapDrawable) res.getDrawable(R.drawable.img01);
@@ -112,30 +112,41 @@ public class MainActivity extends AppCompatActivity {
         imageView02.setImageDrawable(bitmap);
         imageView02.getLayoutParams().width = bitmapWidth2;
         imageView02.getLayoutParams().height = bitmapHeight2;
+*/
 
     }
 
     private void downImg(){
-        Toast.makeText(getApplicationContext(), "Down", Toast.LENGTH_LONG).show();
 
-        Resources res = getResources();
+        if(imageView02.getVisibility() == View.VISIBLE) {
+            Toast.makeText(getApplicationContext(), "Down", Toast.LENGTH_LONG).show();
+
+            Resources res = getResources();
 
 
-        bitmap = (BitmapDrawable) imageView01.getDrawable();
-        int bitmapWidth2 = bitmap.getIntrinsicWidth();
-        int bitmapHeight2 = bitmap.getIntrinsicHeight();
+            bitmap = (BitmapDrawable) imageView01.getDrawable();
+            int bitmapWidth2 = bitmap.getIntrinsicWidth();
+            int bitmapHeight2 = bitmap.getIntrinsicHeight();
 
-        imageView02.setImageDrawable(bitmap);
-        imageView02.getLayoutParams().width = bitmapWidth2;
-        imageView02.getLayoutParams().height = bitmapHeight2;
+            imageView02.setImageDrawable(bitmap);
+            imageView02.getLayoutParams().width = bitmapWidth2;
+            imageView02.getLayoutParams().height = bitmapHeight2; 
 
+            imageView01.setVisibility(View.INVISIBLE);
+
+
+        } else {
+
+            Toast.makeText(getApplicationContext(), "Doesn't exist Up image", Toast.LENGTH_LONG).show();
+        }
+/*
         bitmap = (BitmapDrawable) res.getDrawable(R.drawable.img02);
         int bitmapWidth = bitmap.getIntrinsicWidth();
         int bitmapHeight = bitmap.getIntrinsicHeight();
 
         imageView01.setImageDrawable(bitmap);
         imageView01.getLayoutParams().width = bitmapWidth;
-        imageView01.getLayoutParams().height = bitmapHeight;
+        imageView01.getLayoutParams().height = bitmapHeight;*/
     }
 
 }
